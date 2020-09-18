@@ -1,17 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import App from './App';
-import * as serviceWorker from './serviceWorker';
+import Register from './components/Register';
+import Login from './components/Login';
+import ForgetPassword from './components/ForgetPassword';
+import Activate from './components/Activate';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <Router>
+    <Switch>
+      <Route path='/' exact render={props => <App {...props}/>}/>
+      <Route path='/register' exact render={props => <Register {...props}/>}/>
+      <Route path='/login' exact render={props => <Login {...props}/>}/>
+      <Route path='/users/forgotpassword' exact render={props => <ForgetPassword {...props}/>}/>
+      <Route path='/users/activate/:token' exact render={props => <Activate {...props}/>}/>
+    </Switch>
+  </Router>,
   document.getElementById('root')
 );
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
