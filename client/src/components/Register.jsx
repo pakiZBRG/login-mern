@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import authSvg from '../assets/auth.svg';
 import { ToastContainer, toast } from 'react-toastify';
-import { authenticate, isAuth } from '../helpers/auth';
+import { isAuth } from '../helpers/auth';
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
 
@@ -109,7 +109,7 @@ export default function Register() {
                 </div>
                 <div className="flex-1 bg-indigo-100 text-center hidden lg:flex">
                     <div className="m-12 xl:m-16 w-full bg-contain bg-center bg-no-repeat">
-                        <img src={authSvg}/>
+                        <img src={authSvg} alt='register'/>
                     </div>
                 </div>
             </div>

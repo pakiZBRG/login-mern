@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import authSvg from '../assets/welcome.svg';
 import { ToastContainer, toast } from 'react-toastify';
-import { authenticate, isAuth } from '../helpers/auth';
+import { isAuth } from '../helpers/auth';
 import axios from 'axios';
 import jwt from 'jsonwebtoken';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 
 export default function Activate({match}) {
@@ -25,7 +25,7 @@ export default function Activate({match}) {
     const {name, show, token} = formData
     const handleSubmit = e => {
         e.preventDefault();
-        axios.post(`${process.env.REACT_APP_API_URL}/activation`, {token})
+        axios.post('/api/activation', {token})
             .then(res => {
                 setFormData({ ...formData, show: false });
                 toast.success(res.data.message);
@@ -78,7 +78,7 @@ export default function Activate({match}) {
                 </div>
                 <div className='flex-1 bg-indigo-100 text-center hidden lg:flex'>
                     <div className='m-12 xl:m-16 w-full bg-contain bg-center bg-no-repeat'>
-                        <img src={authSvg}/>
+                        <img src={authSvg} alt='activation'/>
                     </div>
                 </div>
             </div>

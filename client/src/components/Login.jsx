@@ -4,6 +4,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import { authenticate, isAuth } from '../helpers/auth';
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
+import { GoogleLogin } from 'react-google-login';
 
 
 export default function Login({history}) {
@@ -15,6 +16,33 @@ export default function Login({history}) {
     const { email, password } = formData;
 
     const handleChange = text => e => setFormData({...formData, [text]: e.target.value});
+
+    //send Google token
+    const sendGoogleToken = tokenId => {
+        axios.post('/api/googlelogin', {idToken: tokenId})
+            .then(res => {
+                console.log(res.data)
+                informParent(res)
+            })
+            .catch(err => toast.error('Google login error'))
+    }
+
+    //if success authenticate user and redirect
+    const informParent = response => {
+        authenticate(response, () => {
+            isAuth() && isAuth.role === 'admin' 
+                ?
+            history.posuh('/admin') 
+                :
+            history.push('/private')
+        })
+    }
+
+    //Get response from Google
+    const responseGoogle = response => {
+        console.log(response);
+        sendGoogleToken(response.tokenId);
+    }
 
     //Submit data to server
     const handleSubmit = e => {
@@ -96,14 +124,34 @@ export default function Login({history}) {
                                 <a 
                                     href="/register"
                                     className='w-full max-w-xs font-bold shadow-sm rounded-lg py-3 bg-indigo-100 text-gray-800 flex items-center justify-center transition-all duration-300 ease-in-out focus:outline-none hover:shadow focus:shadow-sm focus:shadow-outline mt-5'
-                                >Sign up</a>
+                                >
+                                    Sign up
+                                </a>
+                                <GoogleLogin
+                                    clientId={`${process.env.REACT_APP_GOOGLE_CLIENT}`}
+                                    onSuccess={responseGoogle}
+                                    onFailure={responseGoogle}
+                                    cookiePolicy={'single_host_origin'}
+                                    render={renderProps => (
+                                        <button
+                                            onClick={renderProps.onClick}
+                                            disabled={renderProps.disabled}
+                                            className='w-full max-w-xs mt-4 font-bold shadow-sm rounded-lg py-3 bg-red-500 text-gray-100 flex items-center justify-center transition-all duration-300 ease-in-out focus:outline-none hover:shadow focus:shadow-sm hover:shadow-outline'
+                                        >
+                                            <i className='fa fa-google mr-1'></i>
+                                            Sign in with Google
+                                        </button>
+                                    )}
+                                >
+
+                                </GoogleLogin>
                             </div>
                         </form>
                     </div>
                 </div>
                 <div className="flex-1 bg-indigo-100 text-center hidden lg:flex">
                     <div className="m-12 xl:m-16 w-full bg-contain bg-center bg-no-repeat">
-                        <img src={authSvg}/>
+                        <img src={authSvg} alt='login'/>
                     </div>
                 </div>
             </div>
