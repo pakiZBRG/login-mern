@@ -7,6 +7,7 @@ import Login from './components/Login';
 import ForgetPassword from './components/ForgetPassword';
 import ResetPassword from './components/ResetPassword';
 import Activate from './components/Activate';
+// import Private from './components/Private';
 import 'react-toastify/dist/ReactToastify.css';
 
 
@@ -19,6 +20,7 @@ ReactDOM.render(
       <Route path='/users/forgotpassword' exact render={props => <ForgetPassword {...props}/>}/>
       <Route path='/users/activate/:token' exact render={props => <Activate {...props}/>}/>
       <Route path='/users/password/reset/:token' exact render={props => <ResetPassword {...props}/>}/>
+      {/* <Route path="/private" component={Private} /> */}
     </Switch>
   </Router>,
   document.getElementById('root')

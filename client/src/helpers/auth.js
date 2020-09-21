@@ -70,5 +70,6 @@ export const removeLocalStorage = key => {
 // signout
 export const signout = next => {
     removeCookie('token')
-    removeLocalStorage('user')
+    removeLocalStorage('user');
+    next();
 }

@@ -5,6 +5,7 @@ import { authenticate, isAuth } from '../helpers/auth';
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
 import { GoogleLogin } from 'react-google-login';
+import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
 
 
 export default function Login({history}) {
@@ -21,14 +22,28 @@ export default function Login({history}) {
     const sendGoogleToken = tokenId => {
         axios.post('/api/googlelogin', {idToken: tokenId})
             .then(res => {
-                console.log(res.data)
-                informParent(res)
+                redirectUser(res);
             })
             .catch(err => toast.error('Google login error'))
     }
+    //Get response from Google
+    const responseGoogle = response => sendGoogleToken(response.tokenId);
+
+    //send Facebook token
+    const sendFacebookToken = (userID, accessToken) => {
+        axios.post('/api/facebooklogin', {userID, accessToken})
+            .then(res => {
+                redirectUser(res);
+            })
+            .catch(err => {
+                toast.error('Facebook login error.');
+            })
+    };
+    //Get response from Facebook
+    const responseFacebook = response => sendFacebookToken(response.userID, response.accessToken);
 
     //if success authenticate user and redirect
-    const informParent = response => {
+    const redirectUser = response => {
         authenticate(response, () => {
             isAuth() && isAuth.role === 'admin' 
                 ?
@@ -36,12 +51,6 @@ export default function Login({history}) {
                 :
             history.push('/private')
         })
-    }
-
-    //Get response from Google
-    const responseGoogle = response => {
-        console.log(response);
-        sendGoogleToken(response.tokenId);
     }
 
     //Submit data to server
@@ -142,9 +151,21 @@ export default function Login({history}) {
                                             Sign in with Google
                                         </button>
                                     )}
-                                >
-
-                                </GoogleLogin>
+                                />
+                                <FacebookLogin
+                                    appId={`${process.env.REACT_APP_FACEBOOK_CLIENT}`}
+                                    autoLoad={false} //not to load login page with facebook
+                                    callback={responseFacebook}
+                                    render={renderProps => (
+                                        <button
+                                            onClick={renderProps.onClick}
+                                            className='w-full max-w-xs mt-4 font-bold shadow-sm rounded-lg py-3 bg-blue-500 text-gray-100 flex items-center justify-center transition-all duration-300 ease-in-out focus:outline-none hover:shadow focus:shadow-sm hover:shadow-outline'
+                                        >
+                                            <i className='fa fa-facebook mr-1'></i>
+                                            Sign in with Facebook
+                                        </button>
+                                    )}
+                                />
                             </div>
                         </form>
                     </div>
