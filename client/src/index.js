@@ -5,22 +5,24 @@ import App from './App';
 import Register from './components/Register';
 import Login from './components/Login';
 import ForgetPassword from './components/ForgetPassword';
-import ResetPassword from './components/ResetPassword';
 import Activate from './components/Activate';
-// import Private from './components/Private';
+import ResetPassword from './components/ResetPassword';
+import Private from './components/Private';
+import Admin from './components/Admin';
 import 'react-toastify/dist/ReactToastify.css';
 
 
 ReactDOM.render(
   <Router>
     <Switch>
-      <Route path='/' exact render={props => <App {...props}/>}/>
-      <Route path='/register' exact render={props => <Register {...props}/>}/>
-      <Route path='/login' exact render={props => <Login {...props}/>}/>
-      <Route path='/users/forgotpassword' exact render={props => <ForgetPassword {...props}/>}/>
-      <Route path='/users/activate/:token' exact render={props => <Activate {...props}/>}/>
-      <Route path='/users/password/reset/:token' exact render={props => <ResetPassword {...props}/>}/>
-      {/* <Route path="/private" component={Private} /> */}
+      <Route path='/' exact component={App}/>
+      <Route path='/register' component={Register}/>
+      <Route path='/login' component={Login}/>
+      <Route path='/users/forgotpassword' component={ForgetPassword}/>
+      <Route path='/users/activate/:token' component={Activate}/>
+      <Route path='/users/password/reset/:token' component={ResetPassword}/>
+      <Route path="/private" component={Private} />
+      <Route path="/admin" component={Admin} />
     </Switch>
   </Router>,
   document.getElementById('root')

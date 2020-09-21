@@ -5,8 +5,8 @@ import { signout } from '../helpers/auth';
 import { toast } from 'react-toastify';
 
 
-const Private = ({history}) => (
-  <Route
+const AdminRoute = ({history}) => (
+    <Route
     render={props =>
         isAuth() ? (
           <div className='min-h-screen bg-gray-100 text-gray-900 flex justify-center'>
@@ -39,6 +39,6 @@ const Private = ({history}) => (
         )
     }
     ></Route>
-)
- 
-export default Private
+);
+
+export default AdminRoute;

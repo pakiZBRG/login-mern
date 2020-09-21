@@ -1,9 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { signout } from './helpers/auth';
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 
-function App({history}) {
+function App() {
   return (
     <div className='min-h-screen bg-gray-100 text-gray-900 flex justify-center'>
       <ToastContainer/>
@@ -24,42 +23,30 @@ function App({history}) {
                   to='/login'
                   className='mt-5 tracking-wide font-semibold bg-indigo-500 text-gray-100 w-full py-4 rounded-lg hover:bg-indigo-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none'
                 >
-                  <i className='fa fa-sign-in-alt  w-6  -ml-2' />
+                  <i className='fa fa-sign-in ml-2'/>
                   <span className='ml-3'>Sign In</span>
                 </Link>
                 <Link
                   to='/register'
                   className='mt-5 tracking-wide font-semibold bg-gray-500 text-gray-100 w-full py-4 rounded-lg hover:bg-gray-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none'
                 >
-                  <i className='fa fa-user-plus  w-6  -ml-2' />
+                  <i className='fa fa-user-plus ml-2'/>
                   <span className='ml-3'>Sign Up</span>
                 </Link>
                 <Link
                   to='/private'
                   className='mt-5 tracking-wide font-semibold bg-orange-500 text-gray-100 w-full py-4 rounded-lg hover:bg-orange-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none'
                 >
-                  <i className='fa fa-sign-in-alt  w-6  -ml-2' />
+                  <i className='fa fa-user ml-2'/>
                   <span className='ml-3'>Profile Dashbaord</span>
                 </Link>
                 <Link
                   to='/admin'
-                  className='mt-5 tracking-wide font-semibold bg-green-500 text-gray-100 w-full py-4 rounded-lg hover:bg-green-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none'
+                  className='mt-5 tracking-wide font-semibold bg-green-600 text-gray-100 w-full py-4 rounded-lg hover:bg-green-900 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none'
                 >
-                  <i className='fa fa-sign-in-alt  w-6  -ml-2' />
+                  <i className='fa fa-user ml-2'/>
                   <span className='ml-3'>Admin Dashbaord</span>
                 </Link>
-                <button
-                  onClick={() => {
-                    signout(() => {
-                      toast.success('Signout Successfully');
-                      history.push('/');
-                    });
-                  }}
-                  className='mt-5 tracking-wide font-semibold bg-pink-500 text-gray-100 w-full py-4 rounded-lg hover:bg-pink-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none'
-                >
-                  <i className='fa fa-sign-out-alt  w-6  -ml-2' />
-                  <span className='ml-3'>Signout</span>
-                </button>
               </div>
             </div>
           </div>

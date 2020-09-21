@@ -58,7 +58,7 @@ export default function ForgotPassword() {
                                     type='submit'
                                     className='mt-8 tracking-wide font-semibold bg-indigo-500 text-gray-100 w-full py-4 rounded-lg hover:bg-indigo-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none'
                                 >
-                                    <i className='fas fa-sign-in-alt  w-6  -ml-2' />
+                                    <i className='fas fa-sign-in-alt ml-2'/>
                                     <span>Submit</span>
                                 </button>
                                 <p className='mt-5'>If no errors occure, check your email</p>
