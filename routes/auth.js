@@ -50,8 +50,6 @@ router.post('/register', validRegister, (req, res) => {
                 <h3>Please Click on Link to Activate:</h3>
                 <p>${process.env.CLIENT_URL}/users/activate/${token}</p>
                 <hr/>
-                <p>This email contains sensitive info</p>
-                <p>${process.env.CLIENT_URL}</p>
             `
         }
 
@@ -176,8 +174,6 @@ router.put('/forgotpassword', forgotPasswordValidator, async (req,res) => {
                 <h3>Please Click on Link to Reset Password:</h3>
                 <p>${process.env.CLIENT_URL}/users/password/reset/${token}</p>
                 <hr/>
-                <p>This email contains sensitive info</p>
-                <p>${process.env.CLIENT_URL}</p>
             `
         }
 
