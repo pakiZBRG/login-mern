@@ -15,14 +15,14 @@ import 'react-toastify/dist/ReactToastify.css';
 ReactDOM.render(
   <Router>
     <Switch>
-      <Route path='/' exact component={App}/>
-      <Route path='/register' component={Register}/>
-      <Route path='/login' component={Login}/>
-      <Route path='/users/forgotpassword' component={ForgetPassword}/>
-      <Route path='/users/activate/:token' component={Activate}/>
-      <Route path='/users/password/reset/:token' component={ResetPassword}/>
-      <Route path="/private" component={Private} />
-      <Route path="/admin" component={Admin} />
+      <Route exact path='/' component={App}/>
+      <Route exact path='/register' component={Register}/>
+      <Route exact path='/login' component={Login}/>
+      <Route exact path='/users/forgotpassword' component={ForgetPassword}/>
+      <Route exact path='/users/activate/:token' component={Activate}/>
+      <Route exact path='/users/password/reset/:token' component={ResetPassword}/>
+      <Route exact path="/private" component={Private} />
+      <Route exact path="/admin" component={Admin} />
     </Switch>
   </Router>,
   document.getElementById('root')
