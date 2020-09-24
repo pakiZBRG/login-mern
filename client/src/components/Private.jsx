@@ -5,7 +5,8 @@ import { signout } from '../helpers/auth';
 import { toast } from 'react-toastify';
 
 
-const Private = ({history}) => (
+const Private = ({history}) => {
+  return (
   <Route
     render={props =>
         isAuth() ? (
@@ -39,6 +40,7 @@ const Private = ({history}) => (
         )
     }
     ></Route>
-)
- 
+  )
+}
+
 export default Private

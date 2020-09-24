@@ -119,9 +119,9 @@ export default function Login({history}) {
                                 </button>
                                 <a 
                                     href="/users/forgotpassword"
-                                    className='no-underline hover:underline text-indigo-500 text-md text-right mt-3'
+                                    className='no-underline hover:underline text-indigo-500 text-md float-right mt-1'
                                 >
-                                    Forgot password
+                                    Forgot password?
                                 </a>
                             </div>
                             <div className="my-12 border-b text-center">

@@ -13,6 +13,10 @@ if(process.env.NODE_ENV === 'development'){
     app.use(morgan('dev'))
 }
 
+if(process.env.NODE_ENV === 'production'){
+    app.use(express.static('client/build'));
+}
+
 mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
     .then(() => console.log("MongoDB Connected..."))
     .catch(() => console.log("MongoDB Error"));

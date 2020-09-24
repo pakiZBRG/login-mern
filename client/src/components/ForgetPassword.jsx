@@ -24,6 +24,7 @@ export default function ForgotPassword() {
                         email: ""
                     })
                     toast.success('Please check your email');
+                    console.log('aa')
                 })
                 .catch(err => {
                     toast.error(err.response.data.error)
@@ -47,6 +48,7 @@ export default function ForgotPassword() {
                                 className='mx-auto max-w-xs relative '
                                 onSubmit={handleSubmit}
                             >
+                                <p className='text-center text-black mb-5'>Insert your email address to get reset password link</p>
                                 <input
                                     className='w-full px-4 py-3 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white'
                                     type='email'
@@ -61,7 +63,7 @@ export default function ForgotPassword() {
                                     <i className='fas fa-sign-in-alt ml-2'/>
                                     <span>Submit</span>
                                 </button>
-                                <p className='mt-5'>If no errors occure, check your email</p>
+                                <p className='mt-5'>If no errors occures, check your email</p>
                             </form>
                         </div>
                     </div>

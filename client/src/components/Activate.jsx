@@ -69,8 +69,16 @@ export default function Activate({match}) {
                                     href='/register'
                                     target='_self'
                                 >
-                                    <i className='fa fa-sign-in-alt fa 1x ml-2 text-indigo-500'/>
-                                    <span className='ml-4'>Sign Up</span>
+                                    <i className='fa fa-sign-plus fa 1x ml-1 text-indigo-500'/>
+                                    <span className='ml-4'>Create Account</span>
+                                </a>
+                                <a
+                                    className='w-full max-w-xs font-bold shadow-sm rounded-lg py-3 bg-indigo-200 text-gray-800 flex items-center justify-center transition-all duration-300 ease-in-out focus:outline-none hover:shadow focus:shadow-sm focus:shadow-outline mt-5'
+                                    href='/login'
+                                    target='_self'
+                                >
+                                    <i className='fa fa-sign-in fa 1x ml-1 text-indigo-500'/>
+                                    <span className='ml-4'>Sign In</span>
                                 </a>
                             </div>
                         </form>
